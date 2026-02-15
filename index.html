@@ -6,56 +6,70 @@
 
 <title>For My Love Bindu ❤️</title>
 
-<!-- WhatsApp / Social Preview -->
-<meta property="og:title" content="For My Love Bindu ❤️">
-<meta property="og:description" content="A small surprise filled with love, just for you 💕">
-<meta property="og:image" content="https://harishabindu.github.io/MyValentine/bg.jpg">
-<meta property="og:url" content="https://harishabindu.github.io/MyValentine/">
-<meta property="og:type" content="website">
-
-<!-- Elegant Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-/* Reset */
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
-/* Background Image */
 body{
     font-family:'Poppins',sans-serif;
-    background: url("bg.jpg") no-repeat center center fixed;
-    background-size: cover;
-    min-height:100vh;
+    background:url("bg.jpg") no-repeat center center fixed;
+    background-size:cover;
     color:white;
-    text-align:center;
-    position:relative;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 
-/* Dark Overlay */
+/* Dark overlay */
 body::before{
     content:"";
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.45);
+    background:rgba(0,0,0,0.6);
     z-index:-1;
 }
 
-/* Main Container */
+/* Cinematic Intro */
+#intro{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:100;
+    transition:opacity 1.5s ease;
+}
+
+#intro h1{
+    font-family:'Dancing Script',cursive;
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+#intro p{
+    font-size:1rem;
+    opacity:0.8;
+}
+
+/* Main content */
 .container{
     max-width:700px;
     margin:auto;
-    padding:40px 20px;
-    position:relative;
-    z-index:2;
+    padding:60px 20px;
+    text-align:center;
+    opacity:0;
+    transition:opacity 2s ease;
 }
 
-/* Header */
+.container.show{
+    opacity:1;
+}
+
 h1{
     font-family:'Dancing Script',cursive;
     font-size:3rem;
@@ -64,61 +78,28 @@ h1{
 
 h2{
     font-family:'Dancing Script',cursive;
-    font-size:2.2rem;
+    font-size:2rem;
     margin-bottom:25px;
 }
 
-.name{
-    color:#fff7c2;
-    font-weight:bold;
-}
-
-/* Card */
 .card{
-    background:rgba(255,255,255,0.18);
-    border-radius:20px;
+    background:rgba(255,255,255,0.15);
     padding:25px;
+    border-radius:20px;
     margin:25px 0;
     backdrop-filter:blur(6px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Text */
-p{
-    line-height:1.6;
-    margin:10px 0;
-}
-
-/* Buttons */
 button{
     background:#ff6f91;
-    color:white;
     border:none;
     padding:10px 25px;
-    font-size:15px;
     border-radius:25px;
+    color:white;
     cursor:pointer;
-    margin-top:10px;
 }
 
-button:hover{
-    opacity:0.9;
-}
-
-/* Music Button */
-#musicBtn{
-    position:fixed;
-    top:15px;
-    right:15px;
-    background:white;
-    color:#ff4f7b;
-    padding:6px 12px;
-    border-radius:18px;
-    font-size:13px;
-    z-index:5;
-}
-
-/* Popup */
+/* Proposal popup */
 #proposal{
     position:fixed;
     inset:0;
@@ -126,38 +107,28 @@ button:hover{
     display:none;
     justify-content:center;
     align-items:center;
-    z-index:10;
 }
 
-.proposal-box{
+.popup-box{
     background:white;
     color:#ff4f7b;
     padding:25px;
     border-radius:20px;
-    width:90%;
-    max-width:350px;
+    text-align:center;
 }
 
-/* Floating Hearts */
-.heart-float{
+/* Floating hearts */
+.heart{
     position:fixed;
     bottom:-20px;
     font-size:22px;
-    animation:floatUp 8s linear forwards;
+    animation:floatUp 10s linear forwards;
     opacity:0.8;
-    pointer-events:none;
-    z-index:1;
 }
 
 @keyframes floatUp{
-    0%{
-        transform:translateY(0) scale(1);
-        opacity:0.9;
-    }
-    100%{
-        transform:translateY(-110vh) scale(1.3);
-        opacity:0;
-    }
+    from{ transform:translateY(0); opacity:1;}
+    to{ transform:translateY(-110vh); opacity:0;}
 }
 
 </style>
@@ -165,33 +136,32 @@ button:hover{
 
 <body>
 
-<!-- Background Music -->
+<!-- Intro Screen -->
+<div id="intro" onclick="startCinematic()">
+    <h1>For Bindu ❤️</h1>
+    <p>Tap to Begin</p>
+</div>
+
+<!-- Music -->
 <audio id="bgm" loop>
   <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicBtn" onclick="toggleMusic()">🎵 Music</button>
-
-<div class="container">
+<div class="container" id="mainContent">
 
 <h1>Happy Valentine’s Day ❤️</h1>
-
-<h2>My Love, <span class="name">Bindu GV</span></h2>
+<h2>My Love, Bindu GV</h2>
 
 <div class="card">
-<p><strong>My Dearest Bindu,</strong></p>
-
 <p>
-You are my happiness, my peace, and my home.  
-With you, every day feels beautiful.
+From the day you came into my life,  
+everything became more beautiful.
 </p>
-
 <p>
-Thank you for loving me and standing by my side always.
+You are my happiness, my peace, and my forever.
 </p>
-
 <p>
-I promise to love you forever 💕
+I promise to love you every single day. 💕
 </p>
 </div>
 
@@ -202,34 +172,32 @@ I promise to love you forever 💕
 
 </div>
 
+<!-- Proposal -->
 <div id="proposal">
-<div class="proposal-box">
-<h2>💍 Bindu ❤️</h2>
-<p>Will you be my Valentine, today and forever?</p>
+<div class="popup-box">
+<h2>Bindu ❤️</h2>
+<p>Will you be my Valentine today and forever?</p>
+<br>
 <button onclick="accept()">Yes 💖</button>
-<button onclick="reject()">No 🙈</button>
 </div>
 </div>
 
 <script>
 
-let playing=false;
-const bgm=document.getElementById("bgm");
-document.addEventListener("click", function() {
+const intro = document.getElementById("intro");
+const content = document.getElementById("mainContent");
+const bgm = document.getElementById("bgm");
+
+function startCinematic(){
     bgm.play();
-}, { once: true });
-function toggleMusic(){
-    if(!playing){
-        bgm.play();
-        document.getElementById("musicBtn").innerText="⏸ Pause";
-        playing=true;
-    }else{
-        bgm.pause();
-        document.getElementById("musicBtn").innerText="🎵 Music";
-        playing=false;
-    }
+    intro.style.opacity = "0";
+    setTimeout(()=>{
+        intro.style.display="none";
+        content.classList.add("show");
+    },1500);
 }
 
+/* Proposal */
 function openProposal(){
     document.getElementById("proposal").style.display="flex";
 }
@@ -239,21 +207,17 @@ function accept(){
     document.getElementById("proposal").style.display="none";
 }
 
-function reject(){
-    alert("No is not allowed 😜💕");
-}
-
+/* Floating hearts */
 function createHeart(){
     const heart = document.createElement("div");
-    heart.className = "heart-float";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (18 + Math.random() * 15) + "px";
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
     document.body.appendChild(heart);
-    setTimeout(()=>{ heart.remove(); },8000);
+    setTimeout(()=>heart.remove(),10000);
 }
 
-setInterval(createHeart,800);
+setInterval(createHeart,1500);
 
 </script>
 
