@@ -215,7 +215,9 @@ I promise to love you forever 💕
 
 let playing=false;
 const bgm=document.getElementById("bgm");
-
+document.addEventListener("click", function() {
+    bgm.play();
+}, { once: true });
 function toggleMusic(){
     if(!playing){
         bgm.play();
